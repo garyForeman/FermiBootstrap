@@ -1,0 +1,20 @@
+Author: Gary Foreman
+email: gforema2@illinois.edu
+Fermi Gamma-ray Space Telescope data access:
+http://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi
+
+SERIAL:
+gtbootstrap.py generates a user specified number of bootstrapped realizations
+of a user specified Fermi photon file. Code also includes capability to perform
+energy filtering such that the bootstrapped files need not contain photons you
+will throw away when you run gt_apps.filter.
+
+Call as:
+./gtbootstrap.py <photon file name> <number of realizations> 
+<optional: minimum energy (MeV)> <optional: maximum energy (MeV)>
+
+example:
+./gtbootstrap.py L1406121050095451CC7F93_PH00.fits 10 200. 20000.
+This will create 10 realizations of L1406121050095451CC7F93_PH00.fits with 
+photons in the energy range of 200 MeV to 20 GeV. The realizations are named 
+L1406121050095451CC7F93_PH00_bs_0-9.fits
