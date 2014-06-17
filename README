@@ -19,6 +19,10 @@ This will create 10 realizations of L1406121050095451CC7F93_PH00.fits with
 photons in the energy range of 200 MeV to 20 GeV. The realizations are named 
 L1406121050095451CC7F93_PH00_bs_0-9.fits
 
+Required python libraries:
+numpy
+os
+pyfits
 ################################################################################
 
 PARALLEL:
@@ -55,3 +59,8 @@ content of SMC_70m_events.list is:
 <PATH>/L1406121050095451CC7F93_PH06.fits
 <PATH>/L1406121050095451CC7F93_PH07.fits
 <PATH>/L1406121050095451CC7F93_PH08.fits
+
+Required python libraries:
+argparse
+itertools
+multiprocessing
