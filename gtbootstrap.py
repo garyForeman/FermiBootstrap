@@ -8,6 +8,7 @@
 ################################################################################
 
 import numpy as np
+import os
 import pyfits
 
 def gtbootstrap(filename, realizationNumber, emin=100., emax=300000.):
@@ -46,8 +47,10 @@ def gtbootstrap(filename, realizationNumber, emin=100., emax=300000.):
         bootstrapList = pyfits.HDUList([photonData[0], bootstrapHDU, 
                                         photonData[2]])
         #Here we assume filename ends in .fits
-        bootstrapList.writeto(filename[:-len(".fits")] + "_bs_" + \
-                              str(realization) + filename[-len(".fits"):])
+        outfile = filename[:-len(".fits")] + "_bs_" + str(realization) + \
+                  filename[-len(".fits"):]
+        if os.path.isfile(outfile): os.remove(outfile)
+        bootstrapList.writeto(outfile)
 
     photonData.close()
 
