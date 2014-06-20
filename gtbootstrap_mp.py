@@ -41,8 +41,12 @@ def gtbootstrap_mp():
                         help="Upper energy bound you wish to filter.")
     args = parser.parse_args()
 
-    with open(args.eventsList) as evtsFile:
-        photonFiles = evtsFile.readlines()
+    try:
+        with open(args.eventsList) as evtsFile:
+            photonFiles = evtsFile.readlines()
+    except:
+        print "ERROR:", filename, "not found"
+        return
 
     numFiles = len(photonFiles)
 
