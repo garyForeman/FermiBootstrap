@@ -1,10 +1,9 @@
 FermiBootstrap
 ==============
 
-Author: Gary Foreman
-email: gforema2@illinois.edu
-Fermi Gamma-ray Space Telescope data access:
-http://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi
+Author: Gary Foreman  
+email: gforema2@illinois.edu  
+[Fermi Gamma-ray Space Telescope data access](http://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi)
 
 Requirements
 ------------
@@ -66,33 +65,34 @@ the output files.
 
 Example
 ```bash
-./gtbootstrap_mp.py -h
-usage: gtbootstrap_mp.py [-h] jobs eventsList realizationNumber emin emax
+$ ./gtbootstrap_mp.py -h
+usage: gtbootstrap_mp.py [-h] [--emin <min_energy>] [--emax <max_energy>]
+                         <jobs> <path> <realizations>
 
 Multithreaded wrapper for the gtbootstrap function. Parses command line
 arguments, and devides work based on the number of photon files given in the
 events list.
 
 positional arguments:
-  jobs               The number of threads you wish to use.
-  eventsList         File containing your list of photon files.
-  realizationNumber  Number of bootstrap realizations you wish to generate.
-  emin               Lower energy bound you wish to filter.
-  emax               Upper energy bound you wish to filter.
+  <jobs>               The number of threads you wish to use.
+  <path>               File containing your list of photon files.
+  <realizations>       Number of bootstrap realizations you wish to generate.
 
 optional arguments:
-  -h, --help         show this help message and exit
+  -h, --help           show this help message and exit
+  --emin <min_energy>  Lower energy bound you wish to filter (MeV).
+  --emax <max_energy>  Upper energy bound you wish to filter (MeV).
 ```
 
 This will create 10 realizations of each of the photon files listed in
-`SMC_70m_events.list` with photons in the energy range of 200 MeV to 20 GeV.
+`SMC_70m_events.list` with photons in the energy range of 200 MeV to 20 GeV. 
+The task will create pool of nine parallel threads (one per photon file). :
 
 ```bash
-./gtbootstrap_mp.py 9 SMC_70m_events.list 10 200. 20000.
+$ ./gtbootstrap_mp.py 9 SMC_70m_events.list 10 --emin 200. --emax 20000.
 ```
 
-The task will create pool of nine parallel threads (one per photon file). The
-content of `SMC_70m_events.list` is:
+The content of `SMC_70m_events.list` is:
 
 ```
 <PATH>/L1406121050095451CC7F93_PH00.fits

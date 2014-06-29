@@ -52,17 +52,24 @@ def main():
     )
 
     parser = argparse.ArgumentParser(description=helpString)
-    parser.add_argument("jobs", type=int,
-                        help="The number of threads you wish to use.")
-    parser.add_argument("eventsList",
-                        help="File containing your list of photon files.")
-    parser.add_argument("realizationNumber", type=int,
-                        help="Number of bootstrap realizations you wish to " +
-                             "generate.")
-    parser.add_argument("emin", type=float, default=100.,
-                        help="Lower energy bound you wish to filter.")
-    parser.add_argument("emax", type=float, default=300000.,
-                        help="Upper energy bound you wish to filter.")
+    parser.add_argument(
+        "jobs", type=int, help="The number of threads you wish to use.",
+        metavar='<jobs>')
+    parser.add_argument(
+        "eventsList", help="File containing your list of photon files.",
+        metavar='<path>')
+    parser.add_argument(
+        "realizationNumber", type=int,
+        help="Number of bootstrap realizations you wish to generate.",
+        metavar='<realizations>')
+    parser.add_argument(
+        "--emin", type=float, default=100.,
+        help="Lower energy bound you wish to filter (MeV).",
+        metavar='<min_energy>')
+    parser.add_argument(
+        "--emax", type=float, default=300000.,
+        help="Upper energy bound you wish to filter (MeV).",
+        metavar='<max_energy>')
     args = parser.parse_args()
 
     gtbootstrap_mp(args)
