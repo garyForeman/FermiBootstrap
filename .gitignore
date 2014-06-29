@@ -52,3 +52,10 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+#Input and generated file extensions
+*.list
+*.fits
+*.pyc
+*.out
+*.err
+*~
